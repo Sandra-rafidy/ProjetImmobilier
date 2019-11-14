@@ -3,7 +3,6 @@
 {% block body %}
     <div class="jumbotron text-center">
         <h1>Bienvenue !!</h1>
-        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem cum dignissimos dolorem excepturi exercitationem impedit qui quo! Adipisci, cupiditate dicta, dolorum ducimus id minima odit possimus quam reprehenderit temporibus velit. </p>
     </div>
     
     <div class="container">
@@ -12,12 +11,17 @@
             {% for property in properties %}
                 <div class="col-3">
                     <div class="card">
+                        {% if property.filename %}
+                            <img src="{{ vich_uploader_asset(property, 'imageFile') | imagine_filter('medium') }}" alt="card-img-top" style="width:100% ;height: auto; ">
+                        {% else %}
+                            <img src="{{ '/images/properties/empty.jpg'| imagine_filter('medium') }}" alt="card-img-top" style="width:100% ;height: auto; ">
+                        {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="{{ path('property.show', {id: property.id, slug: property.slug}) }}">{{ property.title }}</a>
                             </h5>
                             <p class="card-text">{{ property.postalCode }}</p>
-                            <div class="text-primary" style="font-weight: bold; font-size: 2rem;">{{ property.formatedPrice}} $</div>
+                            <div class="text-primary" style="font-weight: bold; font-size: 2rem;">{{ property.formatedPrice}} Ar</div>
                         </div>
                     </div>
                 </div>
