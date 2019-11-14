@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+    <div class="col-md-3">{{ form_row(form.email) }}</div>
+    <div class="col-md-3">{{ form_row(form.username) }}</div>
+    <div class="col-md-3">{{ form_row(form.password) }}</div>
+    <div class="col-md-3">{{ form_row(form.confirm_password) }}</div>
+{{ form_rest(form) }}
+<div class="col-md-2">
+    <button class="btn btn-success">{{ button|default('Enregistrer')}}</button>
+</div>
+{{ form_end(form) }}
+

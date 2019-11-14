@@ -21,6 +21,17 @@
                     <a class="nav-link {% if current_menu is defined and current_menu == 'properties' %} active{% endif %}"  href="{{ path('property.index') }}">Acheter</a>
                 </li>
             </ul>
+            <ul class="navbar-nav justify-content-end">
+                {% if not app.user %}
+                    <li class="nav-item mr-sm-2">
+                        <a href="{{ path('security_login') }}" class="nav-link">Connexion</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a href="{{ path('security_logout') }}" class="nav-link">Déconnexion</a>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
     </nav>
     {% block body %}{% endblock %}
